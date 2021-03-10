@@ -13,13 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.ui.theme
+package com.example.androiddevchallenge
 
-import androidx.compose.ui.graphics.Color
+import android.os.CountDownTimer
 
-val lightBlue200 = Color(0xFF81D4FA)
-val lightBlue500 = Color(0xFF03A9F4)
-val lightBlue700 = Color(0xFF0288D1)
-val teal200 = Color(0xFF03DAC5)
+class TimeyMcTimer(
+    millisInFuture: Long,
+    countDownInterval: Long,
+    val onTimeChanged: (Long) -> Unit,
+    val onFinished: () -> Unit
+) : CountDownTimer(millisInFuture, countDownInterval) {
+    override fun onTick(p0: Long) {
+        onTimeChanged(p0)
+    }
 
-const val AlphaNearOpaque = 0.95f
+    override fun onFinish() {
+        onFinished()
+    }
+}

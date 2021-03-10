@@ -13,13 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.ui.theme
+package com.example.androiddevchallenge
 
-import androidx.compose.ui.graphics.Color
+sealed class Timer {
 
-val lightBlue200 = Color(0xFF81D4FA)
-val lightBlue500 = Color(0xFF03A9F4)
-val lightBlue700 = Color(0xFF0288D1)
-val teal200 = Color(0xFF03DAC5)
+    object Running : Timer()
 
-const val AlphaNearOpaque = 0.95f
+    object Paused : Timer()
+
+    object New : Timer()
+
+    object Launch : Timer()
+}
